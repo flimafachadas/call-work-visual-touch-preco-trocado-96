@@ -1,0 +1,181 @@
+
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Calendar, ArrowRight, User, ArrowLeft } from "lucide-react";
+import { memo } from "react";
+import { Link } from "react-router-dom";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
+
+const Blog = memo(() => {
+  const blogPosts = [
+    {
+      id: 1,
+      title: "A importância dos espaços de cowork em Tel Aviv",
+      excerpt: "Descubra como os espaços de coworking em Tel Aviv estão revolucionando a forma de trabalhar, criando um ecossistema inovador que conecta profissionais de todo o mundo em um ambiente colaborativo e inspirador.",
+      content: "Tel Aviv se consolidou como um dos principais hubs de inovação mundial, e os espaços de coworking desempenham um papel fundamental nessa transformação. Esses ambientes não apenas oferecem infraestrutura de qualidade, mas também promovem o networking e a colaboração entre profissionais de diferentes áreas...",
+      date: "2024-01-20",
+      author: "Equipe Israel Coworking",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
+      readTime: "8 min",
+      tags: ["Tel Aviv", "Inovação", "Networking"]
+    },
+    {
+      id: 2,
+      title: "Como o Israel Cowork está transformando a produtividade",
+      excerpt: "Conheça as estratégias e metodologias que implementamos no Israel Cowork para maximizar a produtividade dos nossos membros, criando um ambiente otimizado para o sucesso profissional.",
+      content: "No Israel Cowork, acreditamos que a produtividade vai além de simplesmente ter um local para trabalhar. Nossa abordagem holística inclui design de espaços pensado para o bem-estar, tecnologia de ponta e uma comunidade engajada...",
+      date: "2024-01-15",
+      author: "Equipe Israel Coworking", 
+      image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=800&h=400&fit=crop",
+      readTime: "6 min",
+      tags: ["Produtividade", "Metodologia", "Bem-estar"]
+    },
+    {
+      id: 3,
+      title: "Vantagens de trabalhar em um cowork em Jerusalém",
+      excerpt: "Explore as vantagens únicas de trabalhar em Jerusalém, uma cidade que combina história milenar com inovação moderna, oferecendo oportunidades excepcionais para profissionais empreendedores.",
+      content: "Jerusalém oferece uma experiência única para profissionais que buscam um ambiente inspirador. A cidade combina a rica herança cultural com um ecossistema empresarial em crescimento, criando oportunidades únicas de networking e desenvolvimento...",
+      date: "2024-01-10",
+      author: "Equipe Israel Coworking",
+      image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&h=400&fit=crop",
+      readTime: "7 min",
+      tags: ["Jerusalém", "História", "Empreendedorismo"]
+    },
+    {
+      id: 4,
+      title: "Tendências do futuro do trabalho em 2024",
+      excerpt: "Analise as principais tendências que estão moldando o futuro do trabalho e como os espaços de coworking estão se adaptando para atender às novas demandas dos profissionais modernos.",
+      content: "O mundo do trabalho está em constante evolução, e 2024 promete trazer mudanças significativas. Desde a consolidação do trabalho híbrido até o uso de inteligência artificial, explore como essas tendências impactam os espaços de coworking...",
+      date: "2024-01-05",
+      author: "Equipe Israel Coworking",
+      image: "https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=800&h=400&fit=crop",
+      readTime: "9 min",
+      tags: ["Futuro", "Tendências", "Tecnologia"]
+    }
+  ];
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('pt-BR', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  };
+
+  const handleContactClick = () => {
+    window.open('https://wa.me/5585988338969?text=Olá! Gostaria de saber mais sobre o Israel Coworking.', '_blank');
+  };
+
+  return (
+    <div className="min-h-screen">
+      <Header />
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section className="py-16 bg-gradient-to-br from-brand-blue/5 to-brand-orange/5">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <Link to="/" className="inline-flex items-center text-brand-blue hover:text-brand-orange transition-colors mb-6">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Voltar ao início
+              </Link>
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+                <span className="text-brand-blue">Blog</span>{" "}
+                <span className="text-brand-orange">Israel Cowork</span>
+              </h1>
+              <p className="text-xl text-brand-dark/70 mb-8">
+                Insights, tendências e conhecimentos sobre o mundo do coworking e inovação
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Blog Posts */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {blogPosts.map((post) => (
+                <Card key={post.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                  <div className="relative">
+                    <img 
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-64 object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-4 right-4 bg-brand-orange text-white px-3 py-1 rounded-full text-xs font-medium">
+                      {post.readTime}
+                    </div>
+                  </div>
+                  
+                  <CardContent className="p-6">
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {post.tags.map((tag, index) => (
+                        <span key={index} className="bg-brand-blue/10 text-brand-blue px-2 py-1 rounded-full text-xs">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center text-sm text-brand-dark/60 mb-3">
+                      <Calendar className="h-4 w-4 mr-2" />
+                      <span>{formatDate(post.date)}</span>
+                      <span className="mx-2">•</span>
+                      <User className="h-4 w-4 mr-1" />
+                      <span>{post.author}</span>
+                    </div>
+                    
+                    <h2 className="font-bold text-brand-dark mb-3 text-xl leading-tight">
+                      {post.title}
+                    </h2>
+                    
+                    <p className="text-brand-dark/70 mb-4 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                    
+                    <Link to={`/blog/${post.id}`}>
+                      <Button 
+                        variant="ghost" 
+                        className="text-brand-blue hover:text-brand-blue hover:bg-blue-50 p-0 h-auto font-medium"
+                      >
+                        Ler artigo completo
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="py-16 bg-gradient-to-br from-brand-blue/5 to-brand-pink/5">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              <span className="text-brand-blue">Pronto para</span>{" "}
+              <span className="text-brand-orange">começar?</span>
+            </h2>
+            <p className="text-brand-dark/70 mb-8 max-w-2xl mx-auto">
+              Junte-se à nossa comunidade e descubra como o Israel Cowork pode transformar sua forma de trabalhar.
+            </p>
+            <Button 
+              onClick={handleContactClick}
+              className="bg-brand-orange hover:bg-brand-orange/90 text-white px-8 py-3 text-lg"
+            >
+              Entre em contato
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </section>
+      </main>
+      <Footer />
+      <WhatsAppFloat />
+    </div>
+  );
+});
+
+Blog.displayName = "Blog";
+
+export default Blog;
