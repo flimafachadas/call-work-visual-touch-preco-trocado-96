@@ -9,9 +9,9 @@ const HeroSection = memo(() => {
   return (
     <section id="inicio" className="relative w-full overflow-hidden hero-section bg-gradient-to-b from-brand-blue/5 to-brand-light-blue/5">
       {/* Desktop Video */}
-      <div className="relative w-full h-[420px] md:h-[520px] lg:h-[640px] hidden md:block">
+      <div className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] hidden md:block bg-gradient-to-b from-brand-blue/5 to-brand-light-blue/5">
         <video
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           autoPlay
           muted
           loop
