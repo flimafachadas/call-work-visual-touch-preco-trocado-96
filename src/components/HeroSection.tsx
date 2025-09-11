@@ -28,21 +28,15 @@ const HeroSection = memo(() => {
         <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
       </div>
 
-      {/* Mobile Video */}
-      <div className="relative w-full h-[360px] sm:h-[420px] block md:hidden bg-gradient-to-b from-brand-blue/5 to-brand-light-blue/5">
-        <video
-          className="w-full h-full object-contain max-w-full"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
+      {/* Mobile Image */}
+      <div className="relative w-full h-auto min-h-[400px] sm:min-h-[500px] block md:hidden bg-gradient-to-b from-brand-blue/5 to-brand-light-blue/5 flex items-center justify-center">
+        <img
+          src="/lovable-uploads/hero-mobile-endereco-fiscal.jpg"
+          alt="Israel Coworking - Endereço Fiscal - Serviços de registro CNPJ e regularização"
+          className="w-full h-auto object-contain max-w-full"
           style={{ imageRendering: 'crisp-edges' }}
-          aria-label="Israel Coworking - Vídeo institucional mobile"
-        >
-          <source src="/videos/hero-mobile.mp4" type="video/mp4" />
-          Seu navegador não suporta vídeos HTML5.
-        </video>
+          loading="eager"
+        />
         {/* Overlay sutil para melhor contraste */}
         <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
       </div>
