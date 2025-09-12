@@ -165,7 +165,7 @@ const ContactSection = memo(() => {
                     size="sm"
                     className="bg-brand-green hover:bg-brand-green/90 text-white"
                   >
-                    <MessageCircle className="h-4 w-4" />
+                    <img src="/lovable-uploads/03b865e3-09cd-4878-b923-a80bead5fece.png" className="h-4 w-4" alt="WhatsApp" />
                   </Button>
                   <Button
                     onClick={() => window.open(SOCIAL_LINKS.instagram, '_blank')}

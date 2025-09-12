@@ -11,7 +11,7 @@ const WhatsAppFloat = memo(() => {
       aria-label="Contato via WhatsApp"
       type="button"
     >
-      <img src="/lovable-uploads/03b865e3-09cd-4878-b923-a80bead5fece.png" className="h-9 w-9" alt="WhatsApp" />
+      <img src="/lovable-uploads/03b865e3-09cd-4878-b923-a80bead5fece.png" className="h-12 w-12" alt="WhatsApp" />
     </button>
   );
 });
