@@ -5,6 +5,8 @@ import { memo } from "react";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 
 const AboutSection = memo(() => {
+  console.log("AboutSection rendering");
+  
   const values = [
     {
       icon: Building2,
@@ -31,7 +33,16 @@ const AboutSection = memo(() => {
   return (
     <section id="quem-somos" className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-black">
+            TESTE VISUAL - QUEM SOMOS
+          </h2>
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            Se você está vendo este texto, o componente está funcionando.
+          </p>
+        </div>
+        
+        <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             <span className="text-brand-blue">Quem</span>{" "}
             <span className="text-brand-orange">Somos</span>
