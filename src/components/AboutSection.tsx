@@ -1,5 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Building2, Users, Target, Award } from "lucide-react";
 import { memo } from "react";
 import { OptimizedImage } from "@/components/ui/optimized-image";
@@ -43,57 +44,76 @@ const AboutSection = memo(() => {
           </p>
         </div>
 
-        {/* Layout de 3 colunas: História, Missão e Valores */}
-        <div className="grid lg:grid-cols-3 gap-12 mb-16">
-          {/* Nossa História */}
-          <div className="animate-fade-in">
-            <h3 className="text-2xl font-bold text-brand-dark mb-6 text-center">Nossa História</h3>
-            <div className="text-brand-dark/70 leading-relaxed space-y-4">
-              <p>Nossa história começou com coragem.</p>
-              <p>
-                Em 2019, em meio às incertezas que a pandemia traria ao mundo, nasceu nosso coworking. 
-                Um projeto que começou pequeno, mas cheio de propósito: criar um espaço acolhedor, onde 
-                ideias se encontrassem e negócios florescessem — mesmo nos tempos mais difíceis.
-              </p>
-              <p>
-                Desde então, seguimos crescendo. Um passo de cada vez, com muito trabalho, aprendendo, 
-                aprimorando e, acima de tudo, buscando sempre oferecer o melhor atendimento e uma 
-                experiência que faça cada pessoa se sentir parte de algo maior.
-              </p>
-              <p>Ainda temos muito a construir, e é uma alegria ter você nessa jornada com a gente.</p>
-            </div>
-          </div>
+        <Tabs defaultValue="historia" className="w-full mb-16">
+          <TabsList className="grid w-full grid-cols-3 mb-12">
+            <TabsTrigger value="historia" className="text-sm md:text-base">
+              Nossa História
+            </TabsTrigger>
+            <TabsTrigger value="missao" className="text-sm md:text-base">
+              Nossa Missão
+            </TabsTrigger>
+            <TabsTrigger value="valores" className="text-sm md:text-base">
+              Nossos Valores
+            </TabsTrigger>
+          </TabsList>
 
-          {/* Nossa Missão */}
-          <div className="animate-fade-in">
-            <h3 className="text-2xl font-bold text-brand-dark mb-6 text-center">Nossa Missão</h3>
-            <p className="text-brand-dark/80 leading-relaxed">
-              Oferecer um ambiente flexível e prático que impulsione profissionais e empresas, 
-              promovendo conexões de valor e oportunidades de crescimento por meio do trabalho colaborativo.
-            </p>
-          </div>
+          <TabsContent value="historia" className="animate-fade-in">
+            <Card className="border-0 shadow-lg max-w-4xl mx-auto">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-brand-blue mb-6 text-center">Nossa História</h3>
+                <div className="text-brand-dark/70 leading-relaxed space-y-4 text-justify">
+                  <p>Nossa história começou com coragem.</p>
+                  <p>
+                    Em 2019, em meio às incertezas que a pandemia traria ao mundo, nasceu nosso coworking. 
+                    Um projeto que começou pequeno, mas cheio de propósito: criar um espaço acolhedor, onde 
+                    ideias se encontrassem e negócios florescessem — mesmo nos tempos mais difíceis.
+                  </p>
+                  <p>
+                    Desde então, seguimos crescendo. Um passo de cada vez, com muito trabalho, aprendendo, 
+                    aprimorando e, acima de tudo, buscando sempre oferecer o melhor atendimento e uma 
+                    experiência que faça cada pessoa se sentir parte de algo maior.
+                  </p>
+                  <p>Ainda temos muito a construir, e é uma alegria ter você nessa jornada com a gente.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
 
-          {/* Nossos Valores */}
-          <div className="animate-fade-in">
-            <h3 className="text-2xl font-bold text-brand-dark mb-6 text-center">Nossos Valores</h3>
-            <div className="space-y-4">
+          <TabsContent value="missao" className="animate-fade-in">
+            <Card className="border-0 shadow-lg max-w-4xl mx-auto">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-brand-orange mb-6 text-center">Nossa Missão</h3>
+                <p className="text-brand-dark/80 leading-relaxed text-lg text-center">
+                  Oferecer um ambiente flexível e prático que impulsione profissionais e empresas, 
+                  promovendo conexões de valor e oportunidades de crescimento por meio do trabalho colaborativo.
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="valores" className="animate-fade-in">
+            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {values.map((value, index) => {
                 const IconComponent = value.icon;
                 return (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="bg-brand-blue/10 p-2 rounded-lg flex-shrink-0 mt-1">
-                      <IconComponent className="h-4 w-4 text-brand-blue" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-brand-dark mb-1 text-sm">{value.title}</h4>
-                      <p className="text-brand-dark/70 text-sm leading-relaxed">{value.description}</p>
-                    </div>
-                  </div>
+                  <Card key={index} className="border-0 shadow-lg group hover-lift">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="bg-brand-blue/10 p-3 rounded-xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                          <IconComponent className="h-6 w-6 text-brand-blue" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-brand-dark mb-2 text-lg">{value.title}</h4>
+                          <p className="text-brand-dark/70 leading-relaxed">{value.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 );
               })}
             </div>
-          </div>
-        </div>
+          </TabsContent>
+        </Tabs>
 
         {/* Imagem do ambiente */}
         <div className="mb-16 animate-fade-in">
