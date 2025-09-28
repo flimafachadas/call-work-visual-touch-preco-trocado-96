@@ -7,7 +7,7 @@ const WhatsAppFloat = memo(() => {
   return (
     <button
       onClick={handleWhatsAppClick}
-      className="fixed bottom-6 right-6 z-40 bg-company-orange hover:bg-company-orange-2 text-white p-5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-company-orange focus:ring-offset-2"
+      className="fixed bottom-6 right-6 z-40 bg-company-orange/80 hover:bg-company-orange text-white p-5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-1 focus:ring-company-orange/50 focus:ring-offset-1"
       aria-label="Contato via WhatsApp"
       type="button"
     >
