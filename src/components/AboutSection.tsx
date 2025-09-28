@@ -5,8 +5,6 @@ import { memo } from "react";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 
 const AboutSection = memo(() => {
-  console.log("AboutSection rendering");
-  
   const values = [
     {
       icon: Building2,
@@ -33,16 +31,7 @@ const AboutSection = memo(() => {
   return (
     <section id="quem-somos" className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-black">
-            TESTE VISUAL - QUEM SOMOS
-          </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            Se você está vendo este texto, o componente está funcionando.
-          </p>
-        </div>
-        
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             <span className="text-brand-blue">Quem</span>{" "}
             <span className="text-brand-orange">Somos</span>
@@ -54,71 +43,74 @@ const AboutSection = memo(() => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div>
-            <h3 className="text-2xl font-bold text-brand-dark mb-6">Nossa História</h3>
-            <p className="text-brand-dark/70 mb-4 leading-relaxed">
-              Nossa história começou com coragem.
-            </p>
-            <p className="text-brand-dark/70 mb-4 leading-relaxed">
-              Em 2019, em meio às incertezas que a pandemia traria ao mundo, nasceu nosso coworking. 
-              Um projeto que começou pequeno, mas cheio de propósito: criar um espaço acolhedor, onde 
-              ideias se encontrassem e negócios florescessem — mesmo nos tempos mais difíceis.
-            </p>
-            <p className="text-brand-dark/70 mb-4 leading-relaxed">
-              Desde então, seguimos crescendo. Um passo de cada vez, com muito trabalho, aprendendo, 
-              aprimorando e, acima de tudo, buscando sempre oferecer o melhor atendimento e uma 
-              experiência que faça cada pessoa se sentir parte de algo maior.
-            </p>
-            <p className="text-brand-dark/70 leading-relaxed">
-              Ainda temos muito a construir, e é uma alegria ter você nessa jornada com a gente.
+        {/* Layout de 3 colunas: História, Missão e Valores */}
+        <div className="grid lg:grid-cols-3 gap-12 mb-16">
+          {/* Nossa História */}
+          <div className="animate-fade-in">
+            <h3 className="text-2xl font-bold text-brand-dark mb-6 text-center">Nossa História</h3>
+            <div className="text-brand-dark/70 leading-relaxed space-y-4">
+              <p>Nossa história começou com coragem.</p>
+              <p>
+                Em 2019, em meio às incertezas que a pandemia traria ao mundo, nasceu nosso coworking. 
+                Um projeto que começou pequeno, mas cheio de propósito: criar um espaço acolhedor, onde 
+                ideias se encontrassem e negócios florescessem — mesmo nos tempos mais difíceis.
+              </p>
+              <p>
+                Desde então, seguimos crescendo. Um passo de cada vez, com muito trabalho, aprendendo, 
+                aprimorando e, acima de tudo, buscando sempre oferecer o melhor atendimento e uma 
+                experiência que faça cada pessoa se sentir parte de algo maior.
+              </p>
+              <p>Ainda temos muito a construir, e é uma alegria ter você nessa jornada com a gente.</p>
+            </div>
+          </div>
+
+          {/* Nossa Missão */}
+          <div className="animate-fade-in">
+            <h3 className="text-2xl font-bold text-brand-dark mb-6 text-center">Nossa Missão</h3>
+            <p className="text-brand-dark/80 leading-relaxed">
+              Oferecer um ambiente flexível e prático que impulsione profissionais e empresas, 
+              promovendo conexões de valor e oportunidades de crescimento por meio do trabalho colaborativo.
             </p>
           </div>
-          
-          <div>
-            <OptimizedImage 
-              src="/lovable-uploads/16cfd104-336c-4121-9a65-c19125385b93.png"
-              alt="Israel Coworking - Ambiente moderno"
-              className="rounded-2xl shadow-lg w-full h-auto"
-              progressive={true}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              skeleton={
-                <div className="w-full h-64 md:h-80 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse rounded-2xl" />
-              }
-            />
-          </div>
-        </div>
 
-        <div className="mb-16 text-center">
-          <h3 className="text-3xl font-bold text-brand-dark mb-6">Nossa Missão</h3>
-          <p className="text-lg text-brand-dark/80 max-w-4xl mx-auto leading-relaxed">
-            Oferecer um ambiente flexível e prático que impulsione profissionais e empresas, 
-            promovendo conexões de valor e oportunidades de crescimento por meio do trabalho colaborativo.
-          </p>
-        </div>
-
-        <div className="mb-8 text-center">
-          <h3 className="text-3xl font-bold text-brand-dark mb-8">Nossos Valores</h3>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map((value, index) => {
-            const IconComponent = value.icon;
-            return (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <CardContent className="p-6 text-center">
-                  <div className="bg-brand-blue/10 p-4 rounded-xl w-fit mx-auto mb-4">
-                    <IconComponent className="h-8 w-8 text-brand-blue" />
+          {/* Nossos Valores */}
+          <div className="animate-fade-in">
+            <h3 className="text-2xl font-bold text-brand-dark mb-6 text-center">Nossos Valores</h3>
+            <div className="space-y-4">
+              {values.map((value, index) => {
+                const IconComponent = value.icon;
+                return (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="bg-brand-blue/10 p-2 rounded-lg flex-shrink-0 mt-1">
+                      <IconComponent className="h-4 w-4 text-brand-blue" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-brand-dark mb-1 text-sm">{value.title}</h4>
+                      <p className="text-brand-dark/70 text-sm leading-relaxed">{value.description}</p>
+                    </div>
                   </div>
-                  <h4 className="font-bold text-brand-dark mb-2">{value.title}</h4>
-                  <p className="text-brand-dark/70 text-sm leading-relaxed">{value.description}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        <div className="mt-16 text-center">
+        {/* Imagem do ambiente */}
+        <div className="mb-16 animate-fade-in">
+          <OptimizedImage 
+            src="/lovable-uploads/16cfd104-336c-4121-9a65-c19125385b93.png"
+            alt="Israel Coworking - Ambiente moderno"
+            className="rounded-2xl shadow-lg w-full h-auto max-w-4xl mx-auto"
+            progressive={true}
+            sizes="(max-width: 768px) 100vw, 80vw"
+            skeleton={
+              <div className="w-full h-64 md:h-80 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse rounded-2xl max-w-4xl mx-auto" />
+            }
+          />
+        </div>
+
+        {/* Nosso Compromisso */}
+        <div className="text-center animate-fade-in">
           <div className="bg-gradient-to-r from-brand-blue to-brand-light-blue rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">Nosso Compromisso</h3>
             <p className="text-lg opacity-90 max-w-3xl mx-auto">
