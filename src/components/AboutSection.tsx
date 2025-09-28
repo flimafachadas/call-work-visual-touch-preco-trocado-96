@@ -8,23 +8,23 @@ const AboutSection = memo(() => {
   const values = [
     {
       icon: Building2,
-      title: "Inovação",
-      description: "Sempre buscando as melhores soluções para nossos clientes"
-    },
-    {
-      icon: Users,
-      title: "Comunidade",
-      description: "Conectando pessoas e criando oportunidades de networking"
+      title: "Flexibilidade",
+      description: "Adaptar-se às necessidades de cada cliente, oferecendo soluções sob medida para diferentes perfis e estágios de negócio"
     },
     {
       icon: Target,
-      title: "Excelência", 
-      description: "Comprometidos com a qualidade em todos os nossos serviços"
+      title: "Praticidade",
+      description: "Simplificar o dia a dia com serviços ágeis e eficientes, permitindo que nossos clientes foquem no que realmente importa"
+    },
+    {
+      icon: Users,
+      title: "Networking",
+      description: "Estimular conexões estratégicas que geram parcerias, negócios e novos caminhos profissionais"
     },
     {
       icon: Award,
-      title: "Confiança",
-      description: "Construindo relacionamentos duradouros baseados na transparência"
+      title: "Crescimento",
+      description: "Apoiar o desenvolvimento pessoal e empresarial, criando um espaço que inspira inovação e evolução constante"
     }
   ];
 
@@ -76,6 +76,18 @@ const AboutSection = memo(() => {
               }
             />
           </div>
+        </div>
+
+        <div className="mb-16 text-center">
+          <h3 className="text-3xl font-bold text-brand-dark mb-6">Nossa Missão</h3>
+          <p className="text-lg text-brand-dark/80 max-w-4xl mx-auto leading-relaxed">
+            Oferecer um ambiente flexível e prático que impulsione profissionais e empresas, 
+            promovendo conexões de valor e oportunidades de crescimento por meio do trabalho colaborativo.
+          </p>
+        </div>
+
+        <div className="mb-8 text-center">
+          <h3 className="text-3xl font-bold text-brand-dark mb-8">Nossos Valores</h3>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
