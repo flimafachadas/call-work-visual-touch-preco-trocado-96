@@ -1,6 +1,7 @@
 
 import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import {
   Accordion,
@@ -73,6 +74,18 @@ const Navbar1 = ({
     signup: { text: "Contrate Agora!", url: "#" },
   },
 }: Navbar1Props) => {
+  const [sheetOpen, setSheetOpen] = useState(false);
+
+  const handleActionWithClose = (action?: () => void) => {
+    if (action) {
+      action();
+    }
+    setSheetOpen(false);
+  };
+
+  const handleLinkClickWithClose = () => {
+    setSheetOpen(false);
+  };
   return (
     <section className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,7 +117,7 @@ const Navbar1 = ({
             <Link to={logo.url} className="flex items-center">
               <img src={logo.src} className="w-20 h-20 object-contain" alt={logo.alt} />
             </Link>
-            <Sheet>
+            <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
                   <Menu className="size-4" />
@@ -113,7 +126,7 @@ const Navbar1 = ({
               <SheetContent className="overflow-y-auto bg-white">
                 <SheetHeader>
                   <SheetTitle>
-                    <Link to={logo.url} className="flex items-center">
+                    <Link to={logo.url} onClick={handleLinkClickWithClose} className="flex items-center">
                       <img src={logo.src} className="w-16 h-16 object-contain" alt={logo.alt} />
                     </Link>
                   </SheetTitle>
@@ -124,7 +137,7 @@ const Navbar1 = ({
                     collapsible
                     className="flex w-full flex-col gap-4"
                   >
-                    {menu.map((item) => renderMobileMenuItem(item))}
+                    {menu.map((item) => renderMobileMenuItem(item, handleActionWithClose, handleLinkClickWithClose))}
                   </Accordion>
                   {mobileExtraLinks.length > 0 && (
                     <div className="border-t py-4">
@@ -134,6 +147,7 @@ const Navbar1 = ({
                             key={idx}
                             className="inline-flex h-10 items-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium text-company-blue hover:bg-gray-50 hover:text-company-orange transition-colors"
                             to={link.url}
+                            onClick={handleLinkClickWithClose}
                           >
                             {link.name}
                           </Link>
@@ -143,7 +157,7 @@ const Navbar1 = ({
                   )}
                   <div className="flex flex-col gap-3">
                     <Button 
-                      onClick={auth.signup.action}
+                      onClick={() => handleActionWithClose(auth.signup.action)}
                       className="bg-company-orange hover:bg-company-orange-2 text-white font-bold w-full"
                     >
                       {auth.signup.text}
@@ -242,7 +256,7 @@ const renderMenuItem = (item: MenuItem) => {
   );
 };
 
-const renderMobileMenuItem = (item: MenuItem) => {
+const renderMobileMenuItem = (item: MenuItem, handleActionWithClose?: (action?: () => void) => void, handleLinkClickWithClose?: () => void) => {
   if (item.items) {
     return (
       <AccordionItem key={item.title} value={item.title} className="border-b-0">
@@ -254,7 +268,7 @@ const renderMobileMenuItem = (item: MenuItem) => {
             subItem.action ? (
               <button
                 key={subItem.title}
-                onClick={subItem.action}
+                onClick={() => handleActionWithClose?.(subItem.action)}
                 className="flex w-full select-none gap-4 rounded-md p-3 leading-none outline-none transition-colors hover:bg-gray-50 hover:text-company-orange text-left active:text-company-orange focus:text-company-blue"
               >
                 {subItem.icon}
@@ -272,6 +286,7 @@ const renderMobileMenuItem = (item: MenuItem) => {
                 key={subItem.title}
                 className="flex select-none gap-4 rounded-md p-3 leading-none outline-none transition-colors hover:bg-gray-50 hover:text-company-orange active:text-company-orange focus:text-company-blue"
                 to={subItem.url}
+                onClick={handleLinkClickWithClose}
               >
                 {subItem.icon}
                 <div>
@@ -294,7 +309,7 @@ const renderMobileMenuItem = (item: MenuItem) => {
     return (
       <button 
         key={item.title} 
-        onClick={item.action} 
+        onClick={() => handleActionWithClose?.(item.action)}
         className="font-semibold text-company-blue hover:text-company-orange w-full text-left active:text-company-orange focus:text-company-blue"
       >
         {item.title}
@@ -306,6 +321,7 @@ const renderMobileMenuItem = (item: MenuItem) => {
     <Link 
       key={item.title} 
       to={item.url} 
+      onClick={handleLinkClickWithClose}
       className="font-semibold text-company-blue hover:text-company-orange active:text-company-orange focus:text-company-blue"
     >
       {item.title}
