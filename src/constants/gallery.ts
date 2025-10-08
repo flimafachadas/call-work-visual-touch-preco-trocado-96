@@ -3,7 +3,7 @@ import { ImageAsset } from "@/types/global";
 export const MAIN_GALLERY_IMAGES: ImageAsset[] = [
   {
     id: 1,
-    src: "/lovable-uploads/da606267-0c00-4a79-8ad8-62ff47fc5557.png",
+    src: "/lovable-uploads/IMG_7821.jpeg",
     alt: "Salas de reunião equipadas e confortáveis"
   },
   {
@@ -33,8 +33,18 @@ export const MAIN_GALLERY_IMAGES: ImageAsset[] = [
   },
   {
     id: 7,
-    src: "/lovable-uploads/f063501a-6102-4bd6-998b-8b3e19fcfcf6.png",
+    src: "/lovable-uploads/IMG_7818.jpeg",
     alt: "Banheiros modernos e limpos"
+  },
+  {
+    id: 8,
+    src: "/lovable-uploads/IMG_7817.jpeg",
+    alt: "Sala privativa com parede marmorizada e mesa em madeira"
+  },
+  {
+    id: 9,
+    src: "/lovable-uploads/IMG_7825.jpeg",
+    alt: "Área externa com jardim e espaço de descanso"
   }
 ] as const;
 

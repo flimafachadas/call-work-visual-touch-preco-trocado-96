@@ -4,7 +4,6 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
 import FacilitiesSection from "@/components/FacilitiesSection";
-import PricingSection from "@/components/PricingSection";
 // ... keep existing code
 // ... keep existing code
 import ContactSection from "@/components/ContactSection";
@@ -63,7 +62,6 @@ const Index = memo(() => {
           <ServicesSection />
           <AboutSection />
           <FacilitiesSection />
-          <PricingSection />
           
           <Suspense fallback={<LoadingFallback />}>
             <GallerySection />
