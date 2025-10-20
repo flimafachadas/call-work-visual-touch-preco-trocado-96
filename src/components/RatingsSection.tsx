@@ -72,7 +72,7 @@ const RatingsSection = memo(() => {
                 />
               </div>
               <div className="text-4xl font-bold text-brand-red mb-2">
-                100%
+                0%
               </div>
               <div className="flex justify-center mb-3">
                 {[...Array(5)].map((_, i) => (
