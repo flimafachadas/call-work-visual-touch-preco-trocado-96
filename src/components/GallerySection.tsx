@@ -60,7 +60,7 @@ const GallerySection = memo(() => {
     {
       id: 8,
       src: "/lovable-uploads/IMG_7817-2.jpeg",
-      alt: "Sala privativa com parede marmorizada e mesa em madeira"
+      alt: "Sala de reunião"
     },
     {
       id: 9,
