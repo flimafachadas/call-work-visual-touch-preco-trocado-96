@@ -6,20 +6,6 @@ import { ImageAsset } from "@/types/global";
 
 const GallerySection = memo(() => {
 
-  const ambienteImages: ImageAsset[] = [
-    {
-      src: "/lovable-uploads/e7175f7d-5648-4940-9d89-604e0d769eef.png",
-      alt: "Corredor interno moderno e bem iluminado"
-    },
-    {
-      src: "/lovable-uploads/01bbe281-f361-4db5-ae6f-f757b6afee9d.png",
-      alt: "Copa / cozinha de apoio completa"
-    },
-    {
-      src: "https://cloud-1de12d.b-cdn.net/media/iW=540&iH=360&oX=29&oY=0&cW=483&cH=360/3957d6e590bfcfba7f41f657d4252b11/image.jpg",
-      alt: "Hall de circulação"
-    }
-  ];
 
   const mainImages: ImageAsset[] = [
     {
@@ -41,11 +27,6 @@ const GallerySection = memo(() => {
       id: 4,
       src: "/lovable-uploads/c2e56701-403c-43a6-91c9-de880db80e86.png",
       alt: "Recepção"
-    },
-    {
-      id: 5,
-      src: "/lovable-uploads/04cca21c-5b1e-497f-b3eb-5b79fb8a870f.png",
-      alt: "Sala privativa com mesa de vidro e decoração moderna"
     },
     {
       id: 6,
@@ -70,8 +51,7 @@ const GallerySection = memo(() => {
   ];
 
   // Use the optimized gallery hook
-  const allImages = [...mainImages, ...ambienteImages];
-  const { selectedImage, openImage, closeImage, getImageStatus } = useImageGallery(allImages, { 
+  const { selectedImage, openImage, closeImage, getImageStatus } = useImageGallery(mainImages, { 
     preloadAll: true 
   });
 
@@ -88,64 +68,29 @@ const GallerySection = memo(() => {
           </p>
         </div>
 
-        <div className="space-y-8">
-          {/* Novas Imagens Section */}
-          <div>
-            <h3 className="text-xl md:text-2xl font-bold text-brand-dark mb-6">Nossos Espaços</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {mainImages.map((image) => (
-                <div 
-                  key={image.id} 
-                  className="group relative overflow-hidden rounded-xl md:rounded-2xl cursor-pointer hover-lift"
-                  onClick={() => openImage(image.src)}
-                >
-                  <OptimizedImage
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                    progressive={true}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    skeleton={
-                      <div className="w-full h-48 md:h-64 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse rounded-xl" />
-                    }
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-4 md:bottom-6 left-2 md:left-4 right-2 md:right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <h4 className="font-semibold text-sm md:text-lg leading-tight">{image.alt}</h4>
-                  </div>
-                </div>
-              ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {mainImages.map((image) => (
+            <div 
+              key={image.id} 
+              className="group relative overflow-hidden rounded-xl md:rounded-2xl cursor-pointer hover-lift"
+              onClick={() => openImage(image.src)}
+            >
+              <OptimizedImage
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                progressive={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                skeleton={
+                  <div className="w-full h-48 md:h-64 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse rounded-xl" />
+                }
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute bottom-4 md:bottom-6 left-2 md:left-4 right-2 md:right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <h4 className="font-semibold text-sm md:text-lg leading-tight">{image.alt}</h4>
+              </div>
             </div>
-          </div>
-
-          {/* Ambientes Adicionais */}
-          <div>
-            <h3 className="text-xl md:text-2xl font-bold text-brand-dark mb-6">Ambientes Internos</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {ambienteImages.map((image, index) => (
-                <div 
-                  key={index} 
-                  className="group relative overflow-hidden rounded-xl md:rounded-2xl cursor-pointer hover-lift"
-                  onClick={() => openImage(image.src)}
-                >
-                  <OptimizedImage
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-48 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                    progressive={true}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    skeleton={
-                      <div className="w-full h-48 md:h-64 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse rounded-xl" />
-                    }
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-4 md:bottom-6 left-2 md:left-4 right-2 md:right-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <h4 className="font-semibold text-sm md:text-lg leading-tight">{image.alt}</h4>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Modal for selected image */}
