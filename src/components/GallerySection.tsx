@@ -30,7 +30,7 @@ const GallerySection = memo(() => {
     {
       id: 2,
       src: "/lovable-uploads/973ae7de-591a-4fde-9220-125a19cd2504.png",
-      alt: "Recepção Israel Coworking com branding moderno"
+      alt: "Recepção"
     },
     {
       id: 3,
