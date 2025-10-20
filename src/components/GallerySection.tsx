@@ -55,7 +55,7 @@ const GallerySection = memo(() => {
     {
       id: 7,
       src: "/lovable-uploads/IMG_7818-2.jpeg",
-      alt: "Banheiros modernos e limpos"
+      alt: "Área de circulação"
     },
     {
       id: 8,
