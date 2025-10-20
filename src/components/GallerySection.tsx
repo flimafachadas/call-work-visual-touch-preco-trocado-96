@@ -25,7 +25,7 @@ const GallerySection = memo(() => {
     {
       id: 1,
       src: "/lovable-uploads/IMG_7821-2.jpeg",
-      alt: "Salas de reunião equipadas e confortáveis"
+      alt: "Sala de reunião master"
     },
     {
       id: 2,
