@@ -50,7 +50,7 @@ const GallerySection = memo(() => {
     {
       id: 6,
       src: "/lovable-uploads/9853646a-8092-4529-a4dd-9f699fad0e01.png",
-      alt: "Recepção moderna com atendimento personalizado"
+      alt: "Recepção"
     },
     {
       id: 7,
