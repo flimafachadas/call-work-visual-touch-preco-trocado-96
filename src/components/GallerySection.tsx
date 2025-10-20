@@ -14,24 +14,9 @@ const GallerySection = memo(() => {
       alt: "Sala de reunião master"
     },
     {
-      id: 2,
-      src: "/lovable-uploads/973ae7de-591a-4fde-9220-125a19cd2504.png",
-      alt: "Recepção"
-    },
-    {
       id: 3,
       src: "/lovable-uploads/0574a065-3c48-4f98-96a1-ddb5b2276cb1.png",
       alt: "Sala privativa"
-    },
-    {
-      id: 4,
-      src: "/lovable-uploads/c2e56701-403c-43a6-91c9-de880db80e86.png",
-      alt: "Recepção"
-    },
-    {
-      id: 6,
-      src: "/lovable-uploads/9853646a-8092-4529-a4dd-9f699fad0e01.png",
-      alt: "Recepção"
     },
     {
       id: 7,
