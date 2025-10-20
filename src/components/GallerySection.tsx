@@ -35,7 +35,7 @@ const GallerySection = memo(() => {
     {
       id: 3,
       src: "/lovable-uploads/0574a065-3c48-4f98-96a1-ddb5b2276cb1.png",
-      alt: "Espaço exclusivo para trabalhar com foco e tranquilidade"
+      alt: "Sala privativa"
     },
     {
       id: 4,
