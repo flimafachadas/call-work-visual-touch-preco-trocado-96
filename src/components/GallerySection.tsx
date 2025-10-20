@@ -40,7 +40,7 @@ const GallerySection = memo(() => {
     {
       id: 4,
       src: "/lovable-uploads/c2e56701-403c-43a6-91c9-de880db80e86.png",
-      alt: "Recepção atenciosa para receber seu cliente com profissionalismo"
+      alt: "Recepção"
     },
     {
       id: 5,
