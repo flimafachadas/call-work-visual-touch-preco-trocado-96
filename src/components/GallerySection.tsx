@@ -24,6 +24,11 @@ const GallerySection = memo(() => {
       alt: "Área de circulação"
     },
     {
+      id: 6,
+      src: "/lovable-uploads/9853646a-8092-4529-a4dd-9f699fad0e01.png",
+      alt: "Recepção"
+    },
+    {
       id: 8,
       src: "/lovable-uploads/IMG_7817-2.jpeg",
       alt: "Sala de reunião"
