@@ -65,7 +65,7 @@ const GallerySection = memo(() => {
     {
       id: 9,
       src: "/lovable-uploads/IMG_7825-2.jpeg",
-      alt: "Área externa com jardim e espaço de descanso"
+      alt: "Sala de convivência"
     }
   ];
 
