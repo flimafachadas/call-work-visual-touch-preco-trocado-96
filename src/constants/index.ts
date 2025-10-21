@@ -74,9 +74,7 @@ export const COMPANY_INFO = {
 // Performance optimization - Pre-computed URLs
 export const SOCIAL_URLS = Object.values(SOCIAL_LINKS);
 export const CONTACT_EMAILS = [
-  CONTACT_INFO.email,
-  'vendas@israelcoworkingoffice.com',
-  'suporte@israelcoworkingoffice.com'
+  CONTACT_INFO.email
 ] as const;
 
 // Working hours

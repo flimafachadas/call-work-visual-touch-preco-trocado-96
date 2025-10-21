@@ -51,9 +51,7 @@ const LEGAL_LINKS: LinkItem[] = [
 ];
 
 const CONTACT_EMAILS = [
-  CONTACT_INFO.email,
-  "vendas@israelcoworkingoffice.com",
-  "suporte@israelcoworkingoffice.com"
+  CONTACT_INFO.email
 ];
 
 const WORKING_HOURS = [
@@ -187,11 +185,7 @@ const Footer = memo(() => {
                 <div className="flex items-center">
                   <Mail className="h-5 w-5 text-brand-blue mr-3" />
                   <div className="text-gray-400">
-                    {CONTACT_EMAILS.map((email, index) => (
-                      <p key={index} className={index === 0 ? "" : "text-sm"}>
-                        {email}
-                      </p>
-                    ))}
+                    <p>{CONTACT_INFO.email}</p>
                   </div>
                 </div>
 

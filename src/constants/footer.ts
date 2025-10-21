@@ -35,9 +35,7 @@ export const FOOTER_LEGAL_LINKS: NavigationLink[] = [
 ];
 
 export const FOOTER_CONTACT_EMAILS: string[] = [
-  CONTACT_INFO.email,
-  "vendas@israelcoworkingoffice.com",
-  "suporte@israelcoworkingoffice.com"
+  CONTACT_INFO.email
 ];
 
 export const FOOTER_WORKING_HOURS: string[] = [
