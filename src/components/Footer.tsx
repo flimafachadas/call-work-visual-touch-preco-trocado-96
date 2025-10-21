@@ -1,12 +1,6 @@
-import { Instagram, Mail, MapPin, Phone, Clock, Shield, Award, Users, Globe, Headphones, MessageCircle } from "lucide-react";
+import { Instagram, Mail, MapPin, Phone, Clock, Headphones, MessageCircle } from "lucide-react";
 import { CONTACT_INFO, SOCIAL_LINKS } from "@/constants";
 import { memo } from "react";
-
-interface Certification {
-  icon: typeof Shield;
-  text: string;
-  color: string;
-}
 
 interface SocialMedia {
   href: string;
@@ -20,12 +14,6 @@ interface LinkItem {
   text: string;
 }
 
-const CERTIFICATIONS: Certification[] = [
-  { icon: Shield, text: "ISO 27001 Certified", color: "brand-green" },
-  { icon: Award, text: "Best Coworking 2024", color: "brand-orange" },
-  { icon: Users, text: "500+ Members", color: "brand-blue" },
-  { icon: Globe, text: "Rede Global", color: "brand-green" }
-];
 
 const SOCIAL_MEDIA: SocialMedia[] = [
   { href: SOCIAL_LINKS.instagram, icon: Instagram, bgColor: "brand-orange", label: "Instagram" }
@@ -59,17 +47,6 @@ const WORKING_HOURS = [
   "Sábado: 8h - 12h"
 ];
 
-const CertificationItem = memo(({ cert }: { cert: Certification }) => {
-  const IconComponent = cert.icon;
-  return (
-    <div className="flex items-center text-sm text-gray-400">
-      <IconComponent className={`h-4 w-4 mr-2 text-${cert.color}`} />
-      {cert.text}
-    </div>
-  );
-});
-
-CertificationItem.displayName = "CertificationItem";
 
 const SocialMediaLink = memo(({ social }: { social: SocialMedia }) => {
   const IconComponent = social.icon;
@@ -120,13 +97,6 @@ const Footer = memo(() => {
                 de classe mundial para profissionais e empresas que buscam 
                 excelência, inovação e resultados extraordinários.
               </p>
-              
-              {/* Certifications */}
-              <div className="flex flex-wrap gap-4 mb-6">
-                {CERTIFICATIONS.map((cert, index) => (
-                  <CertificationItem key={index} cert={cert} />
-                ))}
-              </div>
 
               {/* Social media */}
               <div className="flex space-x-4">
