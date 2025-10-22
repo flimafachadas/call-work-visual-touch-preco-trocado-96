@@ -42,11 +42,7 @@ const BlogPost = memo(() => {
   }
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('pt-BR', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    });
+    return new Date(dateString).toLocaleDateString('pt-BR');
   };
 
   const handleContactClick = () => {
