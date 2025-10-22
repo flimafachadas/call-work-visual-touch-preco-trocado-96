@@ -10,7 +10,11 @@ const BlogSection = memo(() => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    setBlogPosts(getRecentBlogPosts(3));
+    const loadPosts = async () => {
+      const posts = await getRecentBlogPosts(3);
+      setBlogPosts(posts);
+    };
+    loadPosts();
   }, []);
 
   return (

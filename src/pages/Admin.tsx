@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { BlogPost } from "@/utils/blogStorage";
+import { supabase } from "@/integrations/supabase/client";
 
 const Admin = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -53,43 +53,47 @@ const Admin = () => {
     navigate("/");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const existingPosts = localStorage.getItem("blogPosts");
-    const posts: BlogPost[] = existingPosts ? JSON.parse(existingPosts) : [];
-    
-    const newPost: BlogPost = {
-      id: Date.now().toString(),
-      title,
-      excerpt,
-      description,
-      content,
-      date: new Date().toISOString().split('T')[0],
-      author,
-      image,
-      readTime,
-      tags: tags.split(",").map(tag => tag.trim()),
-      link: `/blog/${Date.now()}`,
-    };
-    
-    posts.unshift(newPost);
-    localStorage.setItem("blogPosts", JSON.stringify(posts));
-    
-    toast({
-      title: "Post publicado com sucesso",
-      description: "O novo post já está disponível no blog",
-    });
-    
-    // Limpar formulário
-    setTitle("");
-    setExcerpt("");
-    setDescription("");
-    setContent("");
-    setAuthor("");
-    setImage("");
-    setReadTime("");
-    setTags("");
+    try {
+      const { error } = await supabase
+        .from('blog_posts')
+        .insert({
+          title,
+          excerpt: excerpt || null,
+          description,
+          content,
+          author,
+          image,
+          read_time: readTime,
+          tags: tags.split(",").map(tag => tag.trim()),
+        });
+
+      if (error) throw error;
+
+      toast({
+        title: "Post publicado com sucesso",
+        description: "O novo post já está disponível no blog",
+      });
+      
+      // Limpar formulário
+      setTitle("");
+      setExcerpt("");
+      setDescription("");
+      setContent("");
+      setAuthor("");
+      setImage("");
+      setReadTime("");
+      setTags("");
+    } catch (error) {
+      toast({
+        title: "Erro ao publicar post",
+        description: "Ocorreu um erro ao salvar o post no banco de dados",
+        variant: "destructive",
+      });
+      console.error("Error saving blog post:", error);
+    }
   };
 
   if (!isLoggedIn) {

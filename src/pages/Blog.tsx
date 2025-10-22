@@ -13,7 +13,11 @@ const Blog = memo(() => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    setBlogPosts(getAllBlogPosts());
+    const loadPosts = async () => {
+      const posts = await getAllBlogPosts();
+      setBlogPosts(posts);
+    };
+    loadPosts();
   }, []);
 
   const formatDate = (dateString: string) => {

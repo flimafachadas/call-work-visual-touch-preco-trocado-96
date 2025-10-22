@@ -12,9 +12,13 @@ const BlogPost = memo(() => {
   const [post, setPost] = useState<BlogPostType | undefined>(undefined);
 
   useEffect(() => {
-    if (id) {
-      setPost(getBlogPostById(id));
-    }
+    const loadPost = async () => {
+      if (id) {
+        const post = await getBlogPostById(id);
+        setPost(post);
+      }
+    };
+    loadPost();
   }, [id]);
 
   if (!post) {

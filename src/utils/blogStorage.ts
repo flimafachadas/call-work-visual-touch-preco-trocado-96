@@ -1,3 +1,5 @@
+import { supabase } from "@/integrations/supabase/client";
+
 export interface BlogPost {
   id: string | number;
   title: string;
@@ -67,18 +69,42 @@ const defaultPosts: BlogPost[] = [
   }
 ];
 
-export const getAllBlogPosts = (): BlogPost[] => {
-  const storedPosts = localStorage.getItem("blogPosts");
-  const customPosts: BlogPost[] = storedPosts ? JSON.parse(storedPosts) : [];
-  
-  return [...customPosts, ...defaultPosts];
+export const getAllBlogPosts = async (): Promise<BlogPost[]> => {
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    const dbPosts: BlogPost[] = (data || []).map(post => ({
+      id: post.id,
+      title: post.title,
+      excerpt: post.excerpt || undefined,
+      description: post.description,
+      content: post.content,
+      date: post.date,
+      author: post.author,
+      image: post.image,
+      readTime: post.read_time,
+      tags: post.tags,
+      link: `/blog/${post.id}`,
+    }));
+
+    return [...dbPosts, ...defaultPosts];
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    return defaultPosts;
+  }
 };
 
-export const getBlogPostById = (id: string): BlogPost | undefined => {
-  const allPosts = getAllBlogPosts();
+export const getBlogPostById = async (id: string): Promise<BlogPost | undefined> => {
+  const allPosts = await getAllBlogPosts();
   return allPosts.find(post => post.id.toString() === id);
 };
 
-export const getRecentBlogPosts = (limit: number = 3): BlogPost[] => {
-  return getAllBlogPosts().slice(0, limit);
+export const getRecentBlogPosts = async (limit: number = 3): Promise<BlogPost[]> => {
+  const allPosts = await getAllBlogPosts();
+  return allPosts.slice(0, limit);
 };
