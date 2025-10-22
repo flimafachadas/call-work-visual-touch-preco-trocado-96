@@ -17,6 +17,20 @@ const BlogSection = memo(() => {
     loadPosts();
   }, []);
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+  };
+
+  const formattedPosts = blogPosts.map(post => ({
+    ...post,
+    date: formatDate(post.date)
+  }));
+
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -30,7 +44,7 @@ const BlogSection = memo(() => {
           </p>
         </div>
 
-        <HoverEffect items={blogPosts} className="max-w-7xl mx-auto" />
+        <HoverEffect items={formattedPosts} className="max-w-7xl mx-auto" />
 
         <div className="text-center mt-12">
           <Link to="/blog">
