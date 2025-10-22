@@ -479,7 +479,11 @@ const Admin = () => {
                         </span>
                         <span className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
-                          {new Date(post.date).toLocaleDateString('pt-BR')}
+                          {new Date(post.date).toLocaleDateString('pt-BR', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric'
+                          })}
                         </span>
                         <span className="flex items-center gap-1">
                           <Clock className="h-4 w-4" />
