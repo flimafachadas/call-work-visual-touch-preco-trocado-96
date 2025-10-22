@@ -2,59 +2,19 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight, User, ArrowLeft } from "lucide-react";
-import { memo } from "react";
+import { memo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import { getAllBlogPosts, BlogPost } from "@/utils/blogStorage";
 
 const Blog = memo(() => {
-  const blogPosts = [
-    {
-      id: 1,
-      title: "A importância dos espaços de cowork em Tel Aviv",
-      excerpt: "Descubra como os espaços de coworking em Tel Aviv estão revolucionando a forma de trabalhar, criando um ecossistema inovador que conecta profissionais de todo o mundo em um ambiente colaborativo e inspirador.",
-      content: "Tel Aviv se consolidou como um dos principais hubs de inovação mundial, e os espaços de coworking desempenham um papel fundamental nessa transformação. Esses ambientes não apenas oferecem infraestrutura de qualidade, mas também promovem o networking e a colaboração entre profissionais de diferentes áreas...",
-      date: "2024-01-20",
-      author: "Equipe Israel Coworking",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
-      readTime: "8 min",
-      tags: ["Tel Aviv", "Inovação", "Networking"]
-    },
-    {
-      id: 2,
-      title: "Como o Israel Cowork está transformando a produtividade",
-      excerpt: "Conheça as estratégias e metodologias que implementamos no Israel Cowork para maximizar a produtividade dos nossos membros, criando um ambiente otimizado para o sucesso profissional.",
-      content: "No Israel Cowork, acreditamos que a produtividade vai além de simplesmente ter um local para trabalhar. Nossa abordagem holística inclui design de espaços pensado para o bem-estar, tecnologia de ponta e uma comunidade engajada...",
-      date: "2024-01-15",
-      author: "Equipe Israel Coworking", 
-      image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=800&h=400&fit=crop",
-      readTime: "6 min",
-      tags: ["Produtividade", "Metodologia", "Bem-estar"]
-    },
-    {
-      id: 3,
-      title: "Vantagens de trabalhar em um cowork em Jerusalém",
-      excerpt: "Explore as vantagens únicas de trabalhar em Jerusalém, uma cidade que combina história milenar com inovação moderna, oferecendo oportunidades excepcionais para profissionais empreendedores.",
-      content: "Jerusalém oferece uma experiência única para profissionais que buscam um ambiente inspirador. A cidade combina a rica herança cultural com um ecossistema empresarial em crescimento, criando oportunidades únicas de networking e desenvolvimento...",
-      date: "2024-01-10",
-      author: "Equipe Israel Coworking",
-      image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&h=400&fit=crop",
-      readTime: "7 min",
-      tags: ["Jerusalém", "História", "Empreendedorismo"]
-    },
-    {
-      id: 4,
-      title: "Tendências do futuro do trabalho em 2024",
-      excerpt: "Analise as principais tendências que estão moldando o futuro do trabalho e como os espaços de coworking estão se adaptando para atender às novas demandas dos profissionais modernos.",
-      content: "O mundo do trabalho está em constante evolução, e 2024 promete trazer mudanças significativas. Desde a consolidação do trabalho híbrido até o uso de inteligência artificial, explore como essas tendências impactam os espaços de coworking...",
-      date: "2024-01-05",
-      author: "Equipe Israel Coworking",
-      image: "https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=800&h=400&fit=crop",
-      readTime: "9 min",
-      tags: ["Futuro", "Tendências", "Tecnologia"]
-    }
-  ];
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    setBlogPosts(getAllBlogPosts());
+  }, []);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('pt-BR', {

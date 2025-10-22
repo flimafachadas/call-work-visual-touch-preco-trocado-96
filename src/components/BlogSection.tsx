@@ -2,42 +2,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight, User } from "lucide-react";
 import { Link } from "react-router-dom";
-import { memo } from "react";
+import { memo, useState, useEffect } from "react";
 import { HoverEffect } from "@/components/ui/hover-effect";
+import { getRecentBlogPosts, BlogPost } from "@/utils/blogStorage";
 
 const BlogSection = memo(() => {
-  const blogPosts = [
-    {
-      id: 1,
-      title: "A importância dos espaços de cowork em Tel Aviv",
-      description: "Descubra como os espaços de coworking em Tel Aviv estão revolucionando a forma de trabalhar, criando um ecossistema inovador.",
-      date: "20 de janeiro de 2024",
-      author: "Equipe Israel Coworking",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop",
-      readTime: "8 min",
-      link: "/blog/1"
-    },
-    {
-      id: 2,
-      title: "Como o Israel Cowork está transformando a produtividade",
-      description: "Conheça as estratégias e metodologias que implementamos para maximizar a produtividade dos nossos membros.",
-      date: "15 de janeiro de 2024", 
-      author: "Equipe Israel Coworking",
-      image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=400&h=250&fit=crop",
-      readTime: "6 min",
-      link: "/blog/2"
-    },
-    {
-      id: 3,
-      title: "Vantagens de trabalhar em um cowork em Jerusalém",
-      description: "Explore as vantagens únicas de trabalhar em Jerusalém, uma cidade que combina história milenar com inovação moderna.",
-      date: "10 de janeiro de 2024",
-      author: "Equipe Israel Coworking", 
-      image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=400&h=250&fit=crop",
-      readTime: "7 min",
-      link: "/blog/3"
-    }
-  ];
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    setBlogPosts(getRecentBlogPosts(3));
+  }, []);
 
   return (
     <section className="py-24 bg-white">

@@ -15,6 +15,7 @@ import ReunioeseEventos from "./pages/ReunioeseEventos";
 import BancoDeHoras from "./pages/BancoDeHoras";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const AppWithImagePreload = () => {
         <Route path="/" element={<Index />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/endereco-fiscal" element={<EnderecoFiscal />} />
         <Route path="/endereco-comercial" element={<EnderecoComercial />} />
         <Route path="/salas-comerciais" element={<SalasComerciais />} />
