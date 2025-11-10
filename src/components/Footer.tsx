@@ -187,7 +187,7 @@ const Footer = memo(() => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
             <p className="text-gray-400 text-sm">
-              © 2024 Israel Coworking Brasil Ltda. Todos os direitos reservados. | CNPJ: 12.345.678/0001-90
+              © 2025 Israel Coworking Brasil Ltda. Todos os direitos reservados. | CNPJ: 12.345.678/0001-90
             </p>
             
             <nav className="flex flex-wrap justify-center lg:justify-end space-x-6 text-sm">
